@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>LockIcon.png</file>
+        <file>SelectReticle.jpg</file>
+        <file>trashIcon.jpg</file>
+    </qresource>
+</RCC>
