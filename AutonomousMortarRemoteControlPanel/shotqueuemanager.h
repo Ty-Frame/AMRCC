@@ -1,6 +1,7 @@
 #ifndef SHOTQUEUEMANAGER_H
 #define SHOTQUEUEMANAGER_H
 
+#include <QDebug>
 #include <QObject>
 #include <QVBoxLayout>
 #include <QMessageBox>

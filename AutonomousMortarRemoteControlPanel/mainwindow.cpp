@@ -201,6 +201,9 @@ void MainWindow::on_pushButton_2_clicked()
         bot = nullptr;
     }
 
+    // Clear window of any previous chat
+    ui->textEdit->clear();
+
     // Make sure there is a token in the line edit, RCCBot will handle if the token is bad. It just won't be able to login
     if(ui->lineEdit_3->text()==""){
         QString temp = "No discord token given!";
@@ -303,12 +306,12 @@ void MainWindow::handleMessage()
         QString temp = "Answer: Marker is ";
         QString temp2 = " at angle ";
         QString temp3 = " in progress.";
-        QString location = QString(message).mid(QString(message).indexOf(temp),QString(message).indexOf(temp2)-QString(message).indexOf(temp));
-        QString angle = QString(message).mid(QString(message).indexOf(temp2),QString(message).indexOf(temp3)-QString(message).indexOf(temp2));
+        QString location = QString(message).mid(QString(message).indexOf(temp)+temp.length(),QString(message).indexOf(temp2)-(QString(message).indexOf(temp)+temp.length()));
+        QString angle = QString(message).mid(QString(message).indexOf(temp2)+temp2.length(),QString(message).indexOf(temp3)-(QString(message).indexOf(temp2)+temp2.length()));
 
         // Create shotqueuemanager to update the angle of the marker that is being shot at
         ShotQueueManager* m = new ShotQueueManager(this,ui->verticalLayout,ui->spinBox);
-        m->updateAngle(location, angle);
+        m->updateAngle(location.replace("!",","), angle);
         delete m;
     }
 
@@ -378,7 +381,9 @@ void MainWindow::FireAtSelectedShot()
     if(nullCheck(0))return;
 
     // Send prompt to RCCBot
-    QString temp = "Command: Fire At " + selectedShot->latLon + " From " + turretInfo->latLon + "\n";
+    QString mark = selectedShot->latLon;
+    QString turr = turretInfo->latLon;
+    QString temp = "Command: Fire At " + mark.replace(",","!") + " From " + turr.replace(",","!") + " Location\n";
     bot->write(temp.toLocal8Bit());
 }
 
@@ -780,6 +785,9 @@ void MainWindow::Reset()
             delete chartSettingsStruct;
             chartSettingsStruct = new ChartSettings();
         }
+
+        // Clear RCCBot chat window of any previous chat
+        ui->textEdit->clear();
     }
 
 }
