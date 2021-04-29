@@ -2,7 +2,7 @@
 THIS PROJECT IS NOT DONE UNTIL THE REPORT HAS BEEN UPLOADED TO THIS GIT.
 
 
-The report describes how the application looks visually and how it operates.
+The report describes how the application looks and operates.
 
 
 There is also a link to the demo video on the report.
