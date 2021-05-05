@@ -1,11 +1,6 @@
 # AMRCC
-THIS PROJECT IS NOT DONE UNTIL THE REPORT HAS BEEN UPLOADED TO THIS GIT.
+Frame_James_SP21 is the report for this application which lays out the looks and operation of it. The report also contains a link to a demonstration video. There was an issue with the digital signatures of two signees disappearing on upload. A screenshot has been uploaded along side the pdf to show that all the signatures were there.
 
-
-The report describes how the application looks and operates.
-
-
-There is also a link to the demo video on the report.
 
 This was developed in Qt Creator 4.12.4
 
